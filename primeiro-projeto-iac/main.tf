@@ -18,3 +18,15 @@ module "cloudfront" {
     module.s3
   ]
 }
+
+module "sqs" {
+  source  = "terraform-aws-modules/sqs/aws"
+
+  name = "ronca-sqs"
+
+  create_dlq = true
+
+  tags = {
+    Iac = true
+  }
+}
